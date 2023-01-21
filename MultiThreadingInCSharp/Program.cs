@@ -10,9 +10,20 @@ namespace MultiThreadingInCSharp
         {
             //Insingle threaded program methods executes one after the other
             Console.WriteLine("Multi Threading In C#");
-            Test1();
-            Test2();
-            Test3();
+            //Test1();
+            //Test2();
+            //Test3();
+            //In single threading all methods execute one by one 
+
+            //-> Multi threading <-
+            //defining threads
+            Thread t1 = new Thread(Test1);
+            Thread t2 = new Thread(Test2);
+            Thread t3 = new Thread(Test3);
+            //calling threads
+            t1.Start();
+            t2.Start();
+            t3.Start();
         }
         public static void Test1()
         {
@@ -26,18 +37,13 @@ namespace MultiThreadingInCSharp
             for (int i = 1; i <= 100; i++)
             {
                 Console.WriteLine(i + ": Running Test2 method");
-                if (i == 50)
-                {
-                    Console.WriteLine("Waiting for 5 secs");
-                    Thread.Sleep(5000);
-                } 
             }
         }
         public static void Test3()
         {
             for (int i = 1; i <= 100; i++)
             {
-                Console.WriteLine(i + ":Running Test3 method");
+                Console.WriteLine(i + ": Running Test3 method");
             }
         }
     }
